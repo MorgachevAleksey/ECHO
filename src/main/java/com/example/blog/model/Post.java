@@ -1,7 +1,9 @@
 package com.example.blog.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
+//Класс модели Поста
 public class Post {
     //Поля
     private Long id;
@@ -79,6 +81,21 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", createdAt=" + createdAt +
+                ", tag=" + tag +
+                ", content=" + content +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return Objects.equals(id, post.id);
     }
 }
